@@ -47,14 +47,17 @@ Installation
 
 
 Use postman to make the calls, and add these in Headers
+    
     Accept:application/json,
     Content-Type:application/json
 
 
 
 Endpoints
+
 /api/register (POST)
-In order to register the user needs to provide name,email,password,password_confirmation in Body in "form-data" as key:value. 
+
+In order to register the owner needs to provide name,email,password,password_confirmation in Body in "form-data" as key:value. 
 ![Screenshot](https://github.com/vagg-peer/testapi/assets/58305936/10ecf2e9-a335-460a-8259-30ca85746a97)
 
 
@@ -65,6 +68,7 @@ In Postman go to authorization, select the Bearer Token from the list, and paste
 
 
 /api/login (POST)
+
 In case of token expiration after registration, the user will can to get a new token.
 The user must provide email and password in Body in "form-data" as key:value.
 ![Screenshot4](https://github.com/vagg-peer/testapi/assets/58305936/ecbf99fa-5eb6-4831-8427-beea27f37558)
@@ -77,6 +81,7 @@ On successful login, the application will return the new token
 
 
 /api/shops (GET)
+
 List of all shops
 
 Also the user can filter data using any of these parameters in url
@@ -84,6 +89,7 @@ Also the user can filter data using any of these parameters in url
     /api/shops?shopCategory[eq]=category&city[eq]=city&shopOwner[eq]=user_id
 
 /api/shops (POST)
+
 This is the end where the owners may add a new shop. A .json payload should be placed in Body as in PrtSc below.
 ![Screenshot2](https://github.com/vagg-peer/testapi/assets/58305936/9b1b8148-b67c-444d-b1bc-79b3969d2c6e)
 
@@ -116,10 +122,12 @@ Information of the provided shop
 
 
 /api/shops/{id} (PUT)
+
 Owners can edit their shops. We have to provide the same type of payload like on adding. All the fields expect address are required.
 
 
 /api/shops/{id} (PATCH)
+
 Logged in users can edit their shops. With patch users may provide only the information that they need to update.
 
 Demo payload
@@ -138,9 +146,11 @@ Demo payload
 
 
 /api/shops/{id} (DELETE)
+
 Owners can delete their shops
 
 /api/offers
+
 Owners can make an offer for a shop
 
 Demo payload
@@ -154,4 +164,8 @@ Demo payload
     "shop": 5 //owner should provide the shop id
     
     }
+
+After an offer is placed, all users will be notified by email
+
+    
 
