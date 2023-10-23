@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SendMailController;
+use App\Models\Offer;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('send/email', function(){
+  
+	$send_mail = 'vagg.karanikolos@gmail.com';
+    $offer = Offer::find(1);
+  
+    dispatch(new App\Jobs\SendQueueEmail($send_mail, $offer));
+  
+    dd('send mail successfully !!');
 });

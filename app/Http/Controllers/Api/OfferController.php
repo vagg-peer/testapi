@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\ApiResponses;
 use App\Models\Shop;
 use App\Http\Resources\Api\OfferResource;
+use App\Jobs\SendQueueEmail;
 
 
 class OfferController extends Controller
@@ -51,6 +52,11 @@ class OfferController extends Controller
             ]);
             // dd($request);
             $offer = Offer::create($request->all());
+
+            // $send_mail = 'vagg.karanikolos@gmail.com';
+            // $offer = Offer::find(1);
+  
+            dispatch(new SendQueueEmail($offer));
             return $this->success([
                 'offer' => new OfferResource($offer),
             ],
